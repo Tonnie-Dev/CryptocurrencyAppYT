@@ -2,6 +2,7 @@ package com.plcoding.cryptocurrencyappyt.data.remote.dto
 
 
 import com.google.gson.annotations.SerializedName
+import com.plcoding.cryptocurrencyappyt.domain.model.CoinDetails
 
 data class CoinDetailDTO(
     val description: String,
@@ -40,3 +41,19 @@ data class CoinDetailDTO(
     val type: String,
     val whitepaper: Whitepaper
 )
+
+
+    //create extension fxn to convert DTO to Model
+    fun CoinDetailDTO.toCoinDetails():CoinDetails{
+
+        return CoinDetails(
+            coinId = id,
+            name = name,
+            description = description,
+            symbol = symbol,
+            rank = rank,
+            isActive = isActive,
+            tags = tags.map { tag -> tag.name },
+            team = team
+        )
+    }
