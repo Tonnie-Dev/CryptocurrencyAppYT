@@ -1,4 +1,4 @@
-package com.plcoding.cryptocurrencyappyt.domain.use_case.get_coins
+package com.plcoding.cryptocurrencyappyt.domain.use_case.get_coin
 
 import com.plcoding.cryptocurrencyappyt.common.Resource
 import com.plcoding.cryptocurrencyappyt.data.remote.dto.toCoin
@@ -20,7 +20,7 @@ import javax.inject.Inject
 /*This use case doesn't really care which repo it gets as long as it
 * provides interface with 2 methods getCoin and getCoins*/
 
-class GetCoinsUseCase @Inject constructor(private val repository: CoinRepository) {
+class GetCoinUseCase @Inject constructor(private val repository: CoinRepository) {
 
 
     operator fun invoke(): Flow<Resource<List<Coin>>> = flow{
