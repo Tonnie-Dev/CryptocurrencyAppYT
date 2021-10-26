@@ -23,7 +23,7 @@ import javax.inject.Inject
 class GetCoinUseCase @Inject constructor(private val repository: CoinRepository) {
 
 
-    operator fun invoke(): Flow<Resource<List<Coin>>> = flow{
+    operator fun invoke(): Flow<Resource<Coin>> = flow{
 
 
         try {
