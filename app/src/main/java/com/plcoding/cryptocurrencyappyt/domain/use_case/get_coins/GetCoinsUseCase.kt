@@ -23,7 +23,7 @@ import javax.inject.Inject
 class GetCoinsUseCase @Inject constructor(private val repository: CoinRepository) {
 
 
-    operator fun invoke(): Flow<Resource<List<Coin>>> = flow{
+    operator fun invoke(): Flow<Resource<List<Coin>>> = flow {
 
 
         try {
@@ -37,15 +37,15 @@ class GetCoinsUseCase @Inject constructor(private val repository: CoinRepository
         }
 
         //thrown when something goes wrong while processing any HTTP request.
-        catch (e:HttpException){
-emit(Resource.Error(e.localizedMessage ?: "An expected error occurred"))
+        catch (e: HttpException) {
+            emit(Resource.Error(e.localizedMessage ?: "An expected error occurred"))
 
         }
 
-       /* thrown when there is a failure during reading, writing, and searching
-        file or directory operations - in this case when there is failure
-        to communicate with the server due to lack of internet connection*/
-        catch (e:IOException){
+        /* thrown when there is a failure during reading, writing, and searching
+         file or directory operations - in this case when there is failure
+         to communicate with the server due to lack of internet connection*/
+        catch (e: IOException) {
 
             emit(Resource.Error("Couldn't reach server. Check your internet connnection"))
         }
