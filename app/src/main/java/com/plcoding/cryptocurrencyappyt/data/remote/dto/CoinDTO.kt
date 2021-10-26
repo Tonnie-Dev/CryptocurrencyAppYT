@@ -14,7 +14,7 @@ data class CoinDTO(
     val rank: Int,
     val symbol: String,
     val type: String
-){
+)
 
 
     //extension function to convert DTO to Model Object
@@ -22,4 +22,3 @@ data class CoinDTO(
 
         return Coin(id = id, isActive = isActive, name = name, rank = rank, symbol = symbol)
     }
-}
