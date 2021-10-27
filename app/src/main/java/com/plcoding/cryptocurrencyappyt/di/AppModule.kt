@@ -1,9 +1,13 @@
 package com.plcoding.cryptocurrencyappyt.di
 
+import com.plcoding.cryptocurrencyappyt.common.BASE_URL
+import com.plcoding.cryptocurrencyappyt.data.remote.CoinPaprikaAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 /*Here we define the dependencies that we have to tell Hilt
@@ -16,7 +20,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 
 
-
 object AppModule {
 
     //inside the object class we create fxns that create the dependencies
@@ -27,5 +30,10 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun providesPaprikaApi(): CoinPaprikaAPI {
+
+        return Retrofit.Builder().baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create()).build().create(CoinPaprikaAPI::class.java)
+    }
 
 }
