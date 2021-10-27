@@ -1,5 +1,6 @@
 package com.plcoding.cryptocurrencyappyt.presentation.coin_list
 
+import androidx.lifecycle.ViewModel
 import com.plcoding.cryptocurrencyappyt.domain.repository.CoinRepository
 import com.plcoding.cryptocurrencyappyt.domain.use_case.get_coins.GetCoinsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,5 +19,6 @@ import javax.inject.Inject
 * that is still their job but here the ViewModel contains less
 * Business Logic*/
 @HiltViewModel
-class CoinListViewModel @Inject constructor(private val getCoinsUseCase: GetCoinsUseCase) {
+class CoinListViewModel @Inject constructor(private val getCoinsUseCase: GetCoinsUseCase):
+    ViewModel() {
 }
