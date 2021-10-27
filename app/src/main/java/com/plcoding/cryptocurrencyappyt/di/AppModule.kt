@@ -1,7 +1,10 @@
 package com.plcoding.cryptocurrencyappyt.di
 
-import com.plcoding.cryptocurrencyappyt.common.BASE_URL
+
+import com.plcoding.cryptocurrencyappyt.common.Constants.BASE_URL
 import com.plcoding.cryptocurrencyappyt.data.remote.CoinPaprikaAPI
+import com.plcoding.cryptocurrencyappyt.data.repository.CoinRepositoryImpl
+import com.plcoding.cryptocurrencyappyt.domain.repository.CoinRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,6 +37,13 @@ object AppModule {
 
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).build().create(CoinPaprikaAPI::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCoinRepository(api:CoinPaprikaAPI):CoinRepository{
+
+        return CoinRepositoryImpl(api = api)
     }
 
 }
