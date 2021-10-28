@@ -1,5 +1,6 @@
 package com.plcoding.cryptocurrencyappyt.presentation.coin_list
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import com.plcoding.cryptocurrencyappyt.domain.repository.CoinRepository
 import com.plcoding.cryptocurrencyappyt.domain.use_case.get_coins.GetCoinsUseCase
@@ -19,6 +20,14 @@ import javax.inject.Inject
 * that is still their job but here the ViewModel contains less
 * Business Logic*/
 @HiltViewModel
-class CoinListViewModel @Inject constructor(private val getCoinsUseCase: GetCoinsUseCase):
+class CoinListViewModel @Inject constructor(private val getCoinsUseCase: GetCoinsUseCase) :
     ViewModel() {
+
+
+    //we introduce the class that holds the state which we will then expose to the composables
+
+    //this state variable will be the one to be exposed to the composables
+    var state = mutableStateOf(CoinListState())
+        //restrict writes to only inside the ViewModel
+        private set
 }

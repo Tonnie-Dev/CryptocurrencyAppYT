@@ -6,7 +6,7 @@ import com.plcoding.cryptocurrencyappyt.domain.model.Coin
 * info that we need for the state
 * */
 data class CoinListState(
-    val isLoading: Boolean,
-    val coins: List<Coin> = emptyList()
+    val isLoading: Boolean = false,
+    val coins: List<Coin> = emptyList(),
     val error: String = ""
 )
