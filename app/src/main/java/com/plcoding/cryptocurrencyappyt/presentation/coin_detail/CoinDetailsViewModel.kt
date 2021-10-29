@@ -4,6 +4,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.plcoding.cryptocurrencyappyt.common.Constants
 import com.plcoding.cryptocurrencyappyt.common.Resource
 import com.plcoding.cryptocurrencyappyt.domain.model.Coin
 import com.plcoding.cryptocurrencyappyt.domain.repository.CoinRepository
@@ -31,7 +32,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CoinDetailsViewModel @Inject constructor(
     private val getCoinUseCase: GetCoinUseCase,
-    val savedHandle: SavedStateHandle
+   savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
 
@@ -46,10 +47,15 @@ class CoinDetailsViewModel @Inject constructor(
 
     //inside the init we call the getCoins method to start altering the state and observation
     init {
-        getCoins()
+
+        savedStateHandle.get<String>(Constants.PARAM_COIN_ID)?.let { coinId ->
+
+   getCoin(coinId)
+        }
+
     }
 
-    private fun getCoins(coinId: String) {
+    private fun getCoin(coinId: String) {
 
 
         // use the injected GetCoinUseCase Class which calls invoke implicitly
