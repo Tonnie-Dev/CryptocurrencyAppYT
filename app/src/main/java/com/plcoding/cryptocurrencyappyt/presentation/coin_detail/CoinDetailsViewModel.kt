@@ -1,6 +1,7 @@
 package com.plcoding.cryptocurrencyappyt.presentation.coin_detail
 
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.plcoding.cryptocurrencyappyt.common.Resource
@@ -28,7 +29,10 @@ import javax.inject.Inject
 * that is still their job but here the ViewModel contains less
 * Business Logic*/
 @HiltViewModel
-class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCoinUseCase) :
+class CoinDetailsViewModel @Inject constructor(
+    private val getCoinUseCase: GetCoinUseCase,
+    val savedHandle: SavedStateHandle
+) :
     ViewModel() {
 
 
@@ -40,12 +44,12 @@ class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCo
         private set
 
 
-//inside the init we call the getCoins method to start altering the state and observation
+    //inside the init we call the getCoins method to start altering the state and observation
     init {
         getCoins()
     }
 
-    private fun getCoins(coinId:String){
+    private fun getCoins(coinId: String) {
 
 
         // use the injected GetCoinUseCase Class which calls invoke implicitly
@@ -57,7 +61,7 @@ class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCo
         getCoinUseCase(coinId).onEach { result ->
 
 
-            when(result){
+            when (result) {
 
 
                 is Resource.Success -> {
@@ -69,7 +73,8 @@ class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCo
                 is Resource.Error -> {
 
 
-                    state.value = CoinDetailState(error = result.message ?: "An expected error occurred")
+                    state.value =
+                        CoinDetailState(error = result.message ?: "An expected error occurred")
                 }
                 is Resource.Loading -> {
 
@@ -79,9 +84,9 @@ class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCo
             }
         }
 
-      /*  last we need to launchthe flow inside a Coroutine because flows
-       are asynchronous. We call launchIn to launch this inside the
-       ViewModelScope*/
+            /*  last we need to launchthe flow inside a Coroutine because flows
+             are asynchronous. We call launchIn to launch this inside the
+             ViewModelScope*/
 
             .launchIn(viewModelScope)
     }
