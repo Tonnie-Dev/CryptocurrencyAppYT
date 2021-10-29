@@ -32,7 +32,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CoinDetailsViewModel @Inject constructor(
     private val getCoinUseCase: GetCoinUseCase,
-   savedStateHandle: SavedStateHandle
+  private val savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
 
@@ -50,7 +50,7 @@ class CoinDetailsViewModel @Inject constructor(
 
         savedStateHandle.get<String>(Constants.PARAM_COIN_ID)?.let { coinId ->
 
-   getCoin(coinId)
+            getCoin(coinId)
         }
 
     }
