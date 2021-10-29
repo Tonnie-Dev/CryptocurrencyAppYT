@@ -9,5 +9,6 @@ you'll be able to call it as Constants.BASE_URL*/
 
 object Constants {
     const val BASE_URL = "https://api.coinpaprika.com/"
+    const val PARAM_COIN_ID = "coinId"
 
 }

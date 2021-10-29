@@ -35,7 +35,7 @@ class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCo
     //we introduce the class that holds the state which we will then expose to the composables
 
     //this state variable will be the one to be exposed to the composables
-    var state = mutableStateOf(CoinListState())
+    var state = mutableStateOf(CoinDetailState())
         //restrict writes to only inside the ViewModel
         private set
 
@@ -45,7 +45,7 @@ class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCo
         getCoins()
     }
 
-    private fun getCoins(){
+    private fun getCoins(coinId:String){
 
 
         // use the injected GetCoinUseCase Class which calls invoke implicitly
@@ -54,7 +54,7 @@ class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCo
 
 
         /*we call ON-each to iterate on each element this flow emits*/
-        getCoinsUseCase().onEach { result ->
+        getCoinUseCase(coinId).onEach { result ->
 
 
             when(result){
@@ -64,17 +64,17 @@ class CoinDetailsViewModel @Inject constructor(private val getCoinUseCase: GetCo
 
 
                     //if null just return an empty list
-                    state.value = CoinListState(coins = result.data?: emptyList())
+                    state.value = CoinDetailState(coin = result.data)
                 }
                 is Resource.Error -> {
 
 
-                    state.value = CoinListState(error = result.message ?: "An expected error occurred")
+                    state.value = CoinDetailState(error = result.message ?: "An expected error occurred")
                 }
                 is Resource.Loading -> {
 
 
-                    state.value = CoinListState(isLoading = true)
+                    state.value = CoinDetailState(isLoading = true)
                 }
             }
         }
