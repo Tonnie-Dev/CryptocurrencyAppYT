@@ -29,7 +29,7 @@ import com.plcoding.cryptocurrencyappyt.presentation.coin_list.components.CoinLi
 fun CoinListScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
     //we get the coin details state and unbox it using by
-    
+
     val state by viewModel.state
     
     /*
@@ -40,18 +40,20 @@ fun CoinListScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
    Box(modifier = Modifier.fillMaxSize()) {
 
-       LazyColumn(modifier = Modifier.fillMaxWidth()){
 
 
-           items(items = state.coins){
+       //check null on the coin
+       state.coin?.let {
 
-               coin ->
+           coin ->
+           LazyColumn(modifier = Modifier.fillMaxWidth()){
 
-               CoinListItem(coin = coin, onItemClick = {
-                   navController.navigate(Screen.CoinDetailsScreen.route + "/${coin.id}")
-               } )
+
+
            }
        }
+
+
 
 
 
