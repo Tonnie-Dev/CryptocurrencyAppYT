@@ -26,14 +26,11 @@ import com.plcoding.cryptocurrencyappyt.presentation.coin_list.components.CoinLi
 //we get the viewModel from hilt instead of
 
 @Composable
-fun CoinListScreen(navController: NavController,
-viewModel: CoinListViewModel = hiltViewModel()) {
+fun CoinListScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
-    //we get the coin list state and unbox it using by
-  //  val state = viewModel.state
-
-
-    val state: CoinListState by viewModel.state
+    //we get the coin details state and unbox it using by
+    
+    val state by viewModel.state
     
     /*
     * state success -> show list
