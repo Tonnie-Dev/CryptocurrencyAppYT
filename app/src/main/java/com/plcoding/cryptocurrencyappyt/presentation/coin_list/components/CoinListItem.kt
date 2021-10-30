@@ -1,10 +1,7 @@
 package com.plcoding.cryptocurrencyappyt.presentation.coin_list.components
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -27,7 +24,7 @@ fun CoinListItem(coin: Coin, onItemClick: (Coin) -> Unit) {
         .fillMaxWidth()
         .clickable { onItemClick(coin) }
         .padding(20.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.spacedBy(40.dp)
     ) {
         Text(
             text = "${coin.rank} ${coin.name} (${coin.symbol})",
@@ -44,7 +41,9 @@ fun CoinListItem(coin: Coin, onItemClick: (Coin) -> Unit) {
             fontStyle = FontStyle.Italic,
             textAlign =  TextAlign.End,
             style = MaterialTheme.typography.body2,
-            modifier = Modifier.align(CenterVertically)
+            modifier = Modifier
+                .align(CenterVertically)
+                .padding(20.dp)
 
 
         )
