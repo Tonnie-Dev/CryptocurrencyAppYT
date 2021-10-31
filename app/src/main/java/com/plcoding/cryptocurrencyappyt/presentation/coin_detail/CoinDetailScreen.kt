@@ -20,9 +20,11 @@ import androidx.navigation.NavController
 import com.google.accompanist.flowlayout.FlowRow
 import com.plcoding.cryptocurrencyappyt.presentation.Screen
 import com.plcoding.cryptocurrencyappyt.presentation.coin_detail.components.CoinTag
+import com.plcoding.cryptocurrencyappyt.presentation.coin_detail.components.TeamListItem
 import com.plcoding.cryptocurrencyappyt.presentation.coin_list.CoinListState
 import com.plcoding.cryptocurrencyappyt.presentation.coin_list.CoinListViewModel
 import com.plcoding.cryptocurrencyappyt.presentation.coin_list.components.CoinListItem
+import java.lang.reflect.Member
 
 
 //we get the viewModel from hilt instead of
@@ -113,6 +115,22 @@ fun CoinListScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
                     //Team Members Header
                     Text(text = "Team Members", style = MaterialTheme.typography.h3 )
+
+                    Spacer(modifier = Modifier.height(15.dp))
+                }
+
+
+                items(coin.team){
+
+
+                    member ->
+
+                    TeamListItem(
+                        teamMember = member,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(10.dp)
+                    )
                 }
 
             }
