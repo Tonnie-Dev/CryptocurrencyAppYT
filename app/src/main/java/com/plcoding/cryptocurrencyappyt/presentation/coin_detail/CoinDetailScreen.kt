@@ -107,6 +107,12 @@ fun CoinListScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
                         }
                         
                     }
+
+
+                    Spacer(modifier = Modifier.height(15.dp))
+
+                    //Team Members Header
+                    Text(text = "Team Members", style = MaterialTheme.typography.h3 )
                 }
 
             }
