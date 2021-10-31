@@ -17,7 +17,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.google.accompanist.flowlayout.FlowRow
 import com.plcoding.cryptocurrencyappyt.presentation.Screen
+import com.plcoding.cryptocurrencyappyt.presentation.coin_detail.components.CoinTag
 import com.plcoding.cryptocurrencyappyt.presentation.coin_list.CoinListState
 import com.plcoding.cryptocurrencyappyt.presentation.coin_list.CoinListViewModel
 import com.plcoding.cryptocurrencyappyt.presentation.coin_list.components.CoinListItem
@@ -86,6 +88,25 @@ fun CoinListScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
                     Text(text = "Tags", style = MaterialTheme.typography.h3 )
                     Spacer(modifier = Modifier.height(15.dp))
+
+                    /*FlowRow comes from a dependency
+                    *This basically is a row that wraps the elements if they
+                    * exceed the bounds
+                    * */
+                    
+                    
+                    FlowRow(
+                        mainAxisSpacing = 10.dp,
+                        crossAxisSpacing = 10.dp,
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        
+                        coin.tags.forEach { tag ->
+                            
+                            CoinTag(tag = tag)
+                        }
+                        
+                    }
                 }
 
             }

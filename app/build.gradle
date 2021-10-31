@@ -68,6 +68,8 @@ dependencies {
     // Compose dependencies
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-rc01'
     implementation 'androidx.navigation:navigation-compose:2.4.0-alpha10'
+
+    //FlowRow
     implementation 'com.google.accompanist:accompanist-flowlayout:0.20.0'
 
     // Coroutines
