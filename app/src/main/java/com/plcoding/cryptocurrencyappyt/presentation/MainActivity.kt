@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
                         startDestination = Screen.CoinListScreen.route
                     ) {
 
-                        //First Screen - OverView
+                        //First Screen - OverView - put the
                         composable(route = Screen.CoinListScreen.route) {
 
                             //call the Screen Content
@@ -46,7 +46,7 @@ class MainActivity : ComponentActivity() {
 
                         //Second Screen - Detail Screen
 
-                        composable(route = Screen.CoinDetailsScreen.route){
+                        composable(route = Screen.CoinDetailsScreen.route + "/{coinId}"){
 
                             CoinDetailsScreen()
                         }
