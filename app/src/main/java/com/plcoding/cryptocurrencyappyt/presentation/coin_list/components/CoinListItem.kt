@@ -3,6 +3,7 @@ package com.plcoding.cryptocurrencyappyt.presentation.coin_list.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -15,6 +16,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.plcoding.cryptocurrencyappyt.domain.model.Coin
+import com.plcoding.cryptocurrencyappyt.presentation.theme.CryptocurrencyAppYTTheme
 
 @Composable
 fun CoinListItem(coin: Coin, onItemClick: (Coin) -> Unit) {
@@ -24,7 +26,8 @@ fun CoinListItem(coin: Coin, onItemClick: (Coin) -> Unit) {
         .fillMaxWidth()
         .clickable { onItemClick(coin) }
         .padding(20.dp),
-        horizontalArrangement = Arrangement.spacedBy(40.dp)
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             text = "${coin.rank} ${coin.name} (${coin.symbol})",
@@ -55,7 +58,12 @@ fun CoinListItem(coin: Coin, onItemClick: (Coin) -> Unit) {
 @Preview(name = "CoinListItemPreview")
 @Composable
 fun CoinListItemPreview() {
+    CryptocurrencyAppYTTheme {
+        Surface(color = MaterialTheme.colors.background) {
 
-    val coin = Coin(id = "ssds", isActive = false, name = "Bit", rank = 0, symbol = "B")
-    CoinListItem(coin = coin, onItemClick = {})
+            val coin = Coin(id = "ssds", isActive = false, name = "Bit", rank = 0, symbol = "B")
+            CoinListItem(coin = coin, onItemClick = {})
+
+        }}
+
 }
