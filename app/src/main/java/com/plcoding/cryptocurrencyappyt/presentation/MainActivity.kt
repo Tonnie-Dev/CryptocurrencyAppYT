@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import com.plcoding.cryptocurrencyappyt.presentation.theme.CryptocurrencyAppYTTheme
 
 
@@ -14,7 +16,18 @@ class MainActivity : ComponentActivity() {
         setContent {
             CryptocurrencyAppYTTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    
+
+
+                    //create NavController directly in the top hierarchy
+
+                    val navController = rememberNavController()
+
+                    //call NavHost Composable
+                    NavHost(navController = navController,
+                        )
+
+
+
                 }
             }
         }
