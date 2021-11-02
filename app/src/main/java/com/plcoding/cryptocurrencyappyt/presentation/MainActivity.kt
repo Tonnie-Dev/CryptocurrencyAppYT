@@ -12,8 +12,13 @@ import com.plcoding.cryptocurrencyappyt.presentation.Screen
 import com.plcoding.cryptocurrencyappyt.presentation.coin_detail.CoinDetailsScreen
 import com.plcoding.cryptocurrencyappyt.presentation.coin_list.CoinListScreen
 import com.plcoding.cryptocurrencyappyt.presentation.theme.CryptocurrencyAppYTTheme
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
 
+/*Allows DaggerHilt to inject dependencies in this Activity
+* or sub-composables which we need for the ViewModel*/
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
