@@ -9,6 +9,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.plcoding.cryptocurrencyappyt.presentation.Screen
+import com.plcoding.cryptocurrencyappyt.presentation.coin_detail.CoinDetailsScreen
+import com.plcoding.cryptocurrencyappyt.presentation.coin_list.CoinListScreen
 import com.plcoding.cryptocurrencyappyt.presentation.theme.CryptocurrencyAppYTTheme
 
 
@@ -25,17 +27,25 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
 
                     //call NavHost Composable
-                    NavHost(navController = navController,
+                    NavHost(
+                        navController = navController,
                         startDestination = Screen.CoinListScreen.route
-                    ){
+                    ) {
 
                         //First Screen - OverView
-                        composable(route = Screen.CoinListScreen.route){
+                        composable(route = Screen.CoinListScreen.route) {
 
+                            //call the Screen Content
+                            CoinListScreen(navController = navController)
+                        }
 
+                        //Second Screen - Detail Screen
+
+                        composable(route = Screen.CoinDetailsScreen.route){
+
+                            CoinDetailsScreen()
                         }
                     }
-
 
 
                 }

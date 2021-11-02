@@ -31,7 +31,7 @@ import java.lang.reflect.Member
 //we get the viewModel from hilt instead of
 
 @Composable
-fun CoinListScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
+fun CoinDetailsScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
     //we get the coin details state and unbox it using by
 
