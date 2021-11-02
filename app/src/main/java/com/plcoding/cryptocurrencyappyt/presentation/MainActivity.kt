@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.plcoding.cryptocurrencyappyt.presentation.Screen
 import com.plcoding.cryptocurrencyappyt.presentation.theme.CryptocurrencyAppYTTheme
@@ -26,7 +27,14 @@ class MainActivity : ComponentActivity() {
                     //call NavHost Composable
                     NavHost(navController = navController,
                         startDestination = Screen.CoinListScreen.route
-                    ){}
+                    ){
+
+                        //First Screen - OverView
+                        composable(route = Screen.CoinListScreen.route){
+
+
+                        }
+                    }
 
 
 
