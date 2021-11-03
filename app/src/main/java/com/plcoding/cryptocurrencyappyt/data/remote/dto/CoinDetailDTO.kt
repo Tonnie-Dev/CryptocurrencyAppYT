@@ -3,6 +3,7 @@ package com.plcoding.cryptocurrencyappyt.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 import com.plcoding.cryptocurrencyappyt.domain.model.CoinDetails
+import java.lang.reflect.Parameter
 
 data class CoinDetailDTO(
     val description: String,
@@ -36,7 +37,7 @@ data class CoinDetailDTO(
     @SerializedName("started_at")
     val startedAt: String,
     val symbol: String,
-    val tags: List<Tag>,
+    val tags: List<Tag>?,
     val team: List<TeamMember>,
     val type: String,
     val whitepaper: Whitepaper
@@ -46,14 +47,32 @@ data class CoinDetailDTO(
     //create extension fxn to convert DTO to Model
     fun CoinDetailDTO.toCoinDetails():CoinDetails{
 
-        return CoinDetails(
-            coinId = id,
-            name = name,
-            description = description,
-            symbol = symbol,
-            rank = rank,
-            isActive = isActive,
-            tags = tags.map { tag -> tag.name },
-            team = team
-        )
+        if (tags.isNullOrEmpty()){
+            return CoinDetails(
+                coinId = id,
+                name = name,
+                description = description,
+                symbol = symbol,
+                rank = rank,
+                isActive = isActive,
+                tags = emptyList(),
+                team = team
+            )
+
+        }else {
+
+
+            return  CoinDetails(
+                coinId = id,
+                name = name,
+                description = description,
+                symbol = symbol,
+                rank = rank,
+                isActive = isActive,
+                tags = tags.map { tag -> tag.name },
+                team = team
+            )
+        }
+
+
     }

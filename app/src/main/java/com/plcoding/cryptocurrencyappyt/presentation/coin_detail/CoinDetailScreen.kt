@@ -9,6 +9,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
@@ -36,6 +38,8 @@ fun CoinDetailsScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
     //we get the coin details state and unbox it using by
 
     val state by viewModel.state
+
+
 
     /*
     * state success -> show list
@@ -96,20 +100,32 @@ fun CoinDetailsScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
                     *This basically is a row that wraps the elements if they
                     * exceed the bounds
                     * */
-                    
-                    
+
+
                     FlowRow(
                         mainAxisSpacing = 10.dp,
                         crossAxisSpacing = 10.dp,
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        
-                        coin.tags.forEach { tag ->
-                            
-                            CoinTag(tag = tag)
+
+                        if (coin.tags.isNullOrEmpty()){
+
+                            Text(text = "No Tags Found", style = MaterialTheme.typography.h4)
+                        }else{
+
+                            coin.tags.forEach { tag ->
+
+                                CoinTag(tag = tag)
+                            }
                         }
-                        
+
+
                     }
+
+
+
+
+
 
 
                     Spacer(modifier = Modifier.height(15.dp))
