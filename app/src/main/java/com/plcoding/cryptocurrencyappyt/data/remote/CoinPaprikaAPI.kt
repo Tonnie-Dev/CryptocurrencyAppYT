@@ -13,4 +13,8 @@ interface CoinPaprikaAPI {
 
    @GET("/v1/coins/{coinId}")
    suspend fun getCoinById(@Path("coinId") coinId:String):CoinDetailDTO
+//https://api.coinpaprika.com/v1/coins/
+   // Coin(id=btc-bitcoin
+   //Coin(id=solnet-solana-network
+    //Coin(id=ada-cardano
 }

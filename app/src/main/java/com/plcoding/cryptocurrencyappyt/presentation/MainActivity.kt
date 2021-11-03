@@ -14,6 +14,7 @@ import com.plcoding.cryptocurrencyappyt.presentation.coin_list.CoinListScreen
 import com.plcoding.cryptocurrencyappyt.presentation.theme.CryptocurrencyAppYTTheme
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
 
 /*Allows DaggerHilt to inject dependencies in this Activity
@@ -23,6 +24,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
+            Timber.i("Inside MainActivity")
             CryptocurrencyAppYTTheme {
                 Surface(color = MaterialTheme.colors.background) {
 

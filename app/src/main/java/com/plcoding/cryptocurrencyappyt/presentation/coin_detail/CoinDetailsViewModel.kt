@@ -10,6 +10,7 @@ import com.plcoding.cryptocurrencyappyt.domain.use_case.get_coin.GetCoinUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 import javax.inject.Inject
 
 /*We inject use case as a dependency
@@ -68,8 +69,9 @@ class CoinDetailsViewModel @Inject constructor(
                 is Resource.Success -> {
 
 
-                    //if null just return an empty list
+
                     state.value = CoinDetailState(coin = result.data)
+                    //Timber.i("The statevalue is ${state.value}")
                 }
                 is Resource.Error -> {
 

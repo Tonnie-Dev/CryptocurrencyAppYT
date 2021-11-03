@@ -11,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.forEach
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
 import javax.inject.Inject
 
 /*We inject use case as a dependency
@@ -63,6 +64,8 @@ class CoinListViewModel @Inject constructor(private val getCoinsUseCase: GetCoin
 
                     //if null just return an empty list
                     state.value = CoinListState(coins = result.data?: emptyList())
+
+                    Timber.i("The List is madeOf of ${state.value}")
                 }
                 is Resource.Error -> {
 
