@@ -85,11 +85,22 @@ fun CoinDetailsScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
                     //Coin Description
 
+
+                    if (coin.description.isNullOrEmpty()){
+                        Text(
+                            text = "No Description Found",
+                            style = MaterialTheme.typography.body1,
+                            color = MaterialTheme.colors.error,
+                            fontStyle = FontStyle.Italic
+                        )
+
+                    }else{
+
                     Text(
                         text = coin.description,
                         style = MaterialTheme.typography.body2
 
-                    )
+                    )}
 
                     Spacer(modifier = Modifier.height(15.dp))
 
