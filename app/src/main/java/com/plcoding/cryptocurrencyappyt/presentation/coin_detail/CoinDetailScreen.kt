@@ -121,20 +121,33 @@ fun CoinDetailsScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
                 }
 
 
-                items(coin.team){
+                if (coin.team.isNullOrEmpty()){
+
+                    item {
+
+                        Text(text = "No Members Found", style = MaterialTheme.typography.h4)
+                    }
 
 
-                    member ->
+                }else{
+                    items(coin.team){
 
-                    TeamListItem(
-                        teamMember = member,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(10.dp)
-                    )
 
-                    Divider()
+                            member ->
+
+                        TeamListItem(
+                            teamMember = member,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(10.dp)
+                        )
+
+                        Divider()
+                    }
+
                 }
+
+
 
             }
         }
