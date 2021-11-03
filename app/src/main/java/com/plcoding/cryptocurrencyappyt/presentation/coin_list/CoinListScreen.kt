@@ -66,10 +66,7 @@ viewModel:CoinListViewModel = hiltViewModel()) {
                modifier = Modifier
                    .fillMaxWidth()
                    .padding(20.dp)
-                   .align(
-                       Alignment.TopCenter
-                   )
-           )
+                   .align(Alignment.Center))
        }
 
 
