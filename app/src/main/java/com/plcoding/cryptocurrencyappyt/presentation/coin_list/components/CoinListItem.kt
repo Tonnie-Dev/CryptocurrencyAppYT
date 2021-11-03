@@ -26,8 +26,7 @@ fun CoinListItem(coin: Coin, onItemClick: (Coin) -> Unit) {
         .fillMaxWidth()
         .clickable { onItemClick(coin) }
         .padding(20.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
             text = "${coin.rank} ${coin.name} (${coin.symbol})",
@@ -46,7 +45,7 @@ fun CoinListItem(coin: Coin, onItemClick: (Coin) -> Unit) {
             style = MaterialTheme.typography.body2,
             modifier = Modifier
                 .align(CenterVertically)
-                .padding(20.dp)
+
 
 
         )
