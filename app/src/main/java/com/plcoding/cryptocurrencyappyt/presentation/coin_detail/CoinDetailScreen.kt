@@ -88,7 +88,7 @@ fun CoinDetailsScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
                     Text(
                         text = coin.description,
                         style = MaterialTheme.typography.body2
-                        //modifier = Modifier.fillMaxWidth()
+
                     )
 
                     Spacer(modifier = Modifier.height(15.dp))
