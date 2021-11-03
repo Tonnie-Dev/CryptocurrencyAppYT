@@ -110,7 +110,7 @@ fun CoinDetailsScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
                         if (coin.tags.isNullOrEmpty()){
 
-                            Text(text = "No Tags Found", style = MaterialTheme.typography.h4)
+                            Text(text = "No Tags Found", style = MaterialTheme.typography.body1, color = MaterialTheme.colors.error, fontStyle = FontStyle.Italic)
                         }else{
 
                             coin.tags.forEach { tag ->
@@ -141,7 +141,7 @@ fun CoinDetailsScreen(viewModel: CoinDetailsViewModel = hiltViewModel()) {
 
                     item {
 
-                        Text(text = "No Members Found", style = MaterialTheme.typography.h4)
+                        Text(text = "No Members Found", style = MaterialTheme.typography.body1, color = MaterialTheme.colors.error, fontStyle = FontStyle.Italic)
                     }
 
 
