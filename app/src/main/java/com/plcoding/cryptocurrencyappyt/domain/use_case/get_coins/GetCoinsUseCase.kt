@@ -47,7 +47,7 @@ class GetCoinsUseCase @Inject constructor(private val repository: CoinRepository
          to communicate with the server due to lack of internet connection*/
         catch (e: IOException) {
 
-            emit(Resource.Error("Couldn't reach server. Check your internet connnection"))
+            emit(Resource.Error("Couldn't reach server. Check your internet connection"))
         }
     }
 }

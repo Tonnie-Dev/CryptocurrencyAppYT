@@ -31,7 +31,7 @@ viewModel:CoinListViewModel = hiltViewModel()) {
   //  val state = viewModel.state
 
 
-    val state:CoinListState by viewModel.state
+    val state by viewModel.state
     
     /*
     * state success -> show list

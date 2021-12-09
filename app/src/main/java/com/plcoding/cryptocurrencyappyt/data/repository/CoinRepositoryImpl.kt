@@ -4,6 +4,7 @@ import com.plcoding.cryptocurrencyappyt.data.remote.CoinPaprikaAPI
 import com.plcoding.cryptocurrencyappyt.data.remote.dto.CoinDTO
 import com.plcoding.cryptocurrencyappyt.data.remote.dto.CoinDetailDTO
 import com.plcoding.cryptocurrencyappyt.domain.repository.CoinRepository
+import timber.log.Timber
 import javax.inject.Inject
 
 //this is the real implementation
@@ -20,6 +21,8 @@ class CoinRepositoryImpl @Inject constructor(private val api:CoinPaprikaAPI):Coi
 
     //this suspend method just returns api's getCoinById()
     override suspend fun getCoinsById(coinId:String): CoinDetailDTO {
+
+        Timber.i("The passedId is $coinId")
         return api.getCoinById(coinId)
     }
 }
@@ -27,6 +30,6 @@ class CoinRepositoryImpl @Inject constructor(private val api:CoinPaprikaAPI):Coi
 /*This the implementation of our repo because the actual implementation
 * also contains the direct access to the data
 *
-* The interface inside the domein package don't have much to do with
+* The interface inside the domain package don't have much to do with
 * getting data from API or the Database, it is main fxn is Testing
 * purposes*/

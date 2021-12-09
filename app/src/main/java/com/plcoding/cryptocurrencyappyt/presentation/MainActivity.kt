@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
 
                         //Second Screen - Detail Screen
 
-                        composable(route = Screen.CoinDetailsScreen.route + "/{coinId}"){
+                        composable(route = "${Screen.CoinDetailsScreen.route}/{coinId}"){
 
                             CoinDetailsScreen()
                         }

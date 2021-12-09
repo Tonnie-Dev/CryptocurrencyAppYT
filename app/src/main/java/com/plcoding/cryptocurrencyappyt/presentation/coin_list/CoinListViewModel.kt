@@ -63,7 +63,11 @@ class CoinListViewModel @Inject constructor(private val getCoinsUseCase: GetCoin
 
 
                     //if null just return an empty list
-                    state.value = CoinListState(coins = result.data?: emptyList())
+         state.value = CoinListState(coins = result.data?: emptyList())
+
+                   // state.value = CoinListState().copy(coins = result.data?: emptyList())
+
+                  //  state.value = state.value.copy(coins = result.data?: emptyList())
 
                     Timber.i("The List is madeOf of ${state.value}")
                 }

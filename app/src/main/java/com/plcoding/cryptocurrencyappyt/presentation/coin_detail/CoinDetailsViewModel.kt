@@ -28,7 +28,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CoinDetailsViewModel @Inject constructor(
     private val getCoinUseCase: GetCoinUseCase,
-  private val savedStateHandle: SavedStateHandle
+  savedStateHandle: SavedStateHandle
 ) :
     ViewModel() {
 
@@ -87,7 +87,7 @@ class CoinDetailsViewModel @Inject constructor(
             }
         }
 
-            /*  last we need to launchthe flow inside a Coroutine because flows
+            /*  last we need to launch the flow inside a Coroutine because flows
              are asynchronous. We call launchIn to launch this inside the
              ViewModelScope*/
 
