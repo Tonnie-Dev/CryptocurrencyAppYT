@@ -11,6 +11,8 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -32,6 +34,10 @@ viewModel:CoinListViewModel = hiltViewModel()) {
 
 
     val state by viewModel.state
+
+val list = remember {
+    mutableStateOf(state.coins)
+}
     
     /*
     * state success -> show list
@@ -44,7 +50,7 @@ viewModel:CoinListViewModel = hiltViewModel()) {
        LazyColumn(modifier = Modifier.fillMaxWidth()){
 
 
-           items(items = state.coins){
+           items(items = list.value){
 
                coin ->
 
@@ -64,9 +70,9 @@ viewModel:CoinListViewModel = hiltViewModel()) {
                color = MaterialTheme.colors.error,
                textAlign = TextAlign.Center,
                modifier = Modifier
-                   .fillMaxWidth()
-                   .padding(20.dp)
-                   .align(Alignment.Center))
+                       .fillMaxWidth()
+                       .padding(20.dp)
+                       .align(Alignment.Center))
        }
 
 
