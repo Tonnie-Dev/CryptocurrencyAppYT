@@ -35,9 +35,7 @@ viewModel:CoinListViewModel = hiltViewModel()) {
 
     val state by viewModel.state
 
-val list = remember {
-    mutableStateOf(state.coins)
-}
+
     
     /*
     * state success -> show list
@@ -50,7 +48,7 @@ val list = remember {
        LazyColumn(modifier = Modifier.fillMaxWidth()){
 
 
-           items(items = list.value){
+           items(items = state.coins){
 
                coin ->
 
