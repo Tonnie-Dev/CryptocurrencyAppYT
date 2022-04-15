@@ -14,4 +14,13 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
         assertEquals(4, 2 + 2)
     }
+
+    @Test
+    fun `This is  a test`(){}
+
+    @Test
+    fun `Calories for breakfast properly calculated` (){
+
+
+    }
 }
