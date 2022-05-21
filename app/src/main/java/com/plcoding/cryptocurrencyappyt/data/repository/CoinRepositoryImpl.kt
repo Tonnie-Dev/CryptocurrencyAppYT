@@ -12,7 +12,10 @@ import javax.inject.Inject
 //It injects the API dependency into the repo's constructor
 
 //It implements the domain's repo which has the use-cases
-class CoinRepositoryImpl @Inject constructor(private val api:CoinPaprikaAPI):CoinRepository{
+
+
+class CoinRepositoryImpl @Inject constructor(
+    private val api: CoinPaprikaAPI) : CoinRepository {
 
     //this suspend method just returns api's getCoins()
     override suspend fun getCoins(): List<CoinDTO> {
@@ -20,7 +23,7 @@ class CoinRepositoryImpl @Inject constructor(private val api:CoinPaprikaAPI):Coi
     }
 
     //this suspend method just returns api's getCoinById()
-    override suspend fun getCoinsById(coinId:String): CoinDetailDTO {
+    override suspend fun getCoinsById(coinId: String): CoinDetailDTO {
 
         Timber.i("The passedId is $coinId")
         return api.getCoinById(coinId)

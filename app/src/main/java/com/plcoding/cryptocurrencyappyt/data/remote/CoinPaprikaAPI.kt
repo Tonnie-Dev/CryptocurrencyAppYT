@@ -2,9 +2,11 @@ package com.plcoding.cryptocurrencyappyt.data.remote
 
 import com.plcoding.cryptocurrencyappyt.data.remote.dto.CoinDTO
 import com.plcoding.cryptocurrencyappyt.data.remote.dto.CoinDetailDTO
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CoinPaprikaAPI {
 
@@ -17,6 +19,9 @@ interface CoinPaprikaAPI {
 
     @GET("group/{id}/users")
     fun groupList(@Path("id") groupId: Int): Call<List<User>>
+
+    @GET("query?function=LISTING_STATUS")
+    suspend fun getListings( @Query("apikey") apiKey:String): ResponseBody
 
 
     data class User(val name: String)
